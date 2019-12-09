@@ -1,0 +1,83 @@
+###REACTJS SETUP###
+1. install nodejs
+
+2. visual studio 2017(empty->MVC->no authentication)
+
+3. new controller "Home" and add view name "index.cshtml"
+
+4. create folder name "react" on the Script folder
+
+5. open cmd -> react folder
+6. install util packages("nmp init")
+	->package name: onboarding
+	->version:
+	->description:onboarding task
+	->test command:
+	->git repository:
+	->keywords:
+	->Author: Arjen	
+	->License: 
+7."*npm install --save-dev react react-dom react-tag-input
+	*npm install --save-dev webpack@4.5.0
+	*npm install --save-dev babel-loader babel-core babel-preset-react babel-preset-env
+	*npm install --save-dev semantic-ui-react"
+
+8. include package.json and package-lock.json
+9. Open package.json -> add inside script "build": "webpack"
+
+10. react folder -> create index.jsx and copy paste:
+"import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+ 
+const app = document.getElementById('main');
+ReactDOM.render(<div>Hello World!</div>, app);"
+#no quotes
+
+11.Create webpack.config.js -> react and copy paste the code below:
+ 
+"module.exports = {
+    mode: 'development',
+    context: __dirname,
+    entry: "./index.jsx",
+    output: {
+        path: __dirname + "/dist",
+        filename: "bundle.js"
+    },
+    watch: true,
+    module: {
+        rules: [{
+            test: /\.jsx?$/,
+            exclude: /(node_modules)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['babel-preset-env', 'babel-preset-react']
+                }
+            }
+        }]
+    }
+}" ###no quotes
+12. Run webpack:
+ 	cmd -> react folder:
+	"npm run build"
+===type: yes
+13.Views -> Home -> create Index.cshtml
+###drag and drop bundle.js
+add code: "@section Scripts{
+ 	drag it here
+}"
+14.Views -> Shared -> _Layout.chtml
+Add this line at the end of the body tag
+"@RenderSection("Scripts", required: false)"
+
+ALTERNATIVE:
+=VS to create project.
+=choose ASP.NET Web Application(.net framwork)
+=use empty
+=on solution project name: add-new scaffolding item-mvc empty
+=
+
+
+
+
+
